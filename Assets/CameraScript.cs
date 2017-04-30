@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using KinectBox.Global;
 
 public class CameraScript : MonoBehaviour
 {
+    public KinectController kinectController;
+
     private Camera _cam;
 
     void Start ()
@@ -12,8 +13,8 @@ public class CameraScript : MonoBehaviour
         _cam = gameObject.GetComponent<Camera>();
     }
 	
-	void LateUpdate ()
+	void Update ()
     {
-        _cam.transform.position = GameController.Instance.HeadPosition;
+        _cam.transform.position = kinectController.HeadPosition * 10f;
     }
 }
